@@ -133,55 +133,98 @@ export default function Home() {
             </Head>
 
             <main className={styles.main}>
-                <Image src={logo} alt="Logo" className={styles.logo} />
-
-                <div className={styles.prompt_container}>
-                    <textarea
-                        className={[styles.prompt_box, manrope.className].join(
-                            " "
-                        )}
-                        placeholder="Enter text to analyze..."
-                        onChange={onUserChangedText}
-                        value={userInput}
-                    />
-
-                    <div className={styles.analyze_container}>
-                        <div
-                            className={[
-                                styles.analyze_button,
-                                manrope.className,
-                            ].join(" ")}
-                            onClick={analyzeText}
-                        >
-                            <div className={styles.analyze}>
-                                <p>Analyze</p>
-                            </div>
-                        </div>
+                {/* <Image src={logo} alt="Logo" className={styles.logo} /> */}
+                <div className={styles.left}>
+                    <div className={styles.header}>
+                        <h1>DetectAI</h1>
+                        <p className={styles.description}>
+                            DetectAI is currently powered by{" "}
+                            <a href="https://huggingface.co/roberta-base-openai-detector">
+                                a fine-tuned RoBERTa base model by Hugging Face.
+                            </a>{" "}
+                            You can input text to analyze and the model will
+                            generate a probability of whether the text is
+                            plagiarized or not.
+                        </p>
                     </div>
 
-                    {error.length > 0 && (
-                        <div className={styles.error_container}>
-                            <div className={styles.error}>
-                                <p>{error}</p>
-                            </div>
-                        </div>
-                    )}
+                    <div className={styles.prompt_container}>
+                        <textarea
+                            className={[
+                                styles.prompt_box,
+                                manrope.className,
+                            ].join(" ")}
+                            placeholder="Enter text to analyze..."
+                            onChange={onUserChangedText}
+                            value={userInput}
+                        />
 
-                    {generatedProbability > 0 && (
-                        <div className={styles.score_container}>
-                            <div className={styles.score}>
-                                <p>
-                                    Generated probability:{" "}
-                                    <span className={styles.score_value}>
-                                        {(generatedProbability * 100).toFixed(
-                                            2
-                                        )}
-                                        %
-                                    </span>
-                                </p>
+                        <div className={styles.analyze_container}>
+                            <div
+                                className={[
+                                    styles.analyze_button,
+                                    manrope.className,
+                                ].join(" ")}
+                                onClick={analyzeText}
+                            >
+                                <div className={styles.analyze}>
+                                    <p>Analyze</p>
+                                </div>
                             </div>
                         </div>
-                    )}
+
+                        {error.length > 0 && (
+                            <div className={styles.error_container}>
+                                <div className={styles.error}>
+                                    <p>{error}</p>
+                                </div>
+                            </div>
+                        )}
+
+                        {generatedProbability > 0 && (
+                            <div className={styles.score_container}>
+                                <div className={styles.score}>
+                                    <p>
+                                        Generated probability:{" "}
+                                        <span className={styles.score_value}>
+                                            {(
+                                                generatedProbability * 100
+                                            ).toFixed(2)}
+                                            %
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                </div>
+
+                <div className={styles.right}>
+                    <div className={styles.future_container}>
+                        <h2>Future plans</h2>
+                        <p className={styles.description}>
+                            DetectAI is currently in its early stages. I plan to
+                            add more features in the future, such as:
+                        </p>
+
+                        <ul className={styles.description}>
+                            <li>
+                                <p>
+                                    <strong>Google Doc integration</strong> -
+                                    Detect AI will automatically scan the Google
+                                    Doc that you are currently editing/viewing.
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    <strong>A more robust model</strong> - I
+                                    plan to fine-tune a larger model, such as
+                                    GPT-3, to generate a more accurate
+                                    probability.
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </main>
         </>
