@@ -127,12 +127,22 @@
   margin: 0;
 }
 
+.error_container {
+  background-color: #f8d7da;
+  text-align: center;
+  border-radius: 0.25rem;
+  color: #721c24;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
 .score_container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  transform: none;
+  background-color: #d4edda;
+  text-align: center;
+  border-radius: 0.25rem;
+  color: #155724;
+  margin-bottom: 1rem;
+  width: 100%;
 }
 
 .score {
