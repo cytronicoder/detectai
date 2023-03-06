@@ -27,9 +27,18 @@ export default function Home() {
             return;
         }
 
-        // capping at 1000 characters for now
-        if (userInput.length > 1000) {
-            setError("Please enter text less than 1000 characters.");
+        // minimum of 50 words and capping at 1000 words
+        const inputLength = userInput.split(" ").filter(function (num) {
+            return num != "";
+        }).length;
+
+        if (inputLength < 50) {
+            setError("Please enter text more than 50 words.");
+            return;
+        }
+
+        if (inputLength > 1000) {
+            setError("Please enter text less than 1000 words.");
             return;
         }
 
@@ -164,7 +173,10 @@ export default function Home() {
                                 <p>
                                     Generated probability:{" "}
                                     <span className={styles.score_value}>
-                                        {(generatedProbability * 100).toFixed(2)}%
+                                        {(generatedProbability * 100).toFixed(
+                                            2
+                                        )}
+                                        %
                                     </span>
                                 </p>
                             </div>
